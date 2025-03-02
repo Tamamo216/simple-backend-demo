@@ -1,9 +1,7 @@
-version: "3.8"
-
 services:
   backend:
     build:
-        context: ..
+        context: .
         dockerfile: Dockerfile
     container_name: backend
     ports:
@@ -11,8 +9,15 @@ services:
     depends_on:
         - postgresdb
         - mongodb
-    env_file:
-      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      MONGO_USER: ${MONGO_USER}
+      MONGO_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_DB: ${MONGO_DB}
+      SERVER_PORT: ${SERVER_PORT}
+      CONTEXT_PATH: ${CONTEXT_PATH}
 
   postgresdb:
     image: postgres:13

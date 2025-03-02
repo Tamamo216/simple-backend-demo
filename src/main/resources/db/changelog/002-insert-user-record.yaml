@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002
+      author: NoobMaster86
+      labels: 'v0.0.2'
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: 'admin@example.com'
+              - column:
+                  name: password
+                  value: '$2a$12$baZBVfWLX9YyTnc42QjgveVkX0JUV1hJiC2Dda4Tan8aLn0TSSbbC'
+              - column:
+                  name: display_name
+                  value: 'Admin'

@@ -11,10 +11,11 @@ spring:
       password: ${POSTGRES_PASSWORD}
       driver-class-name: org.postgresql.Driver
       type: com.zaxxer.hikari.HikariDataSource
-      connection-timeout: 30000
-      maximum-pool-size: 20
-      idle-timeout: 600000
-      max-lifetime: 1800000
+      hikari:
+        connectionTimeout: 30000
+        maximumPoolSize: 20
+        idleTimeout: 600000
+        maxLifetime: 1800000
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -26,6 +27,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://${MONGO_USER}:${MONGO_PASSWORD}@mongodb:27017/${MONGO_DB}
+
+  liquibase:
+    change-log: classpath:db/changelog/master.yaml
 
 springdoc:
     api-docs:
